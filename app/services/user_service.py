@@ -6,6 +6,9 @@ class UserService:
         self.repository = repository
 
     def register(self, name, email, password):
+        if self.repository.find_by_email(email) is not None:
+            raise ValueError("Email already registered")
+
         user = {
             "name": name,
             "email": email,
