@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Campus Event Manager{% endblock %}</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 640px; margin: 30px auto; padding: 0 16px; }
+    nav a { margin-right: 12px; }
+    .message { background: #eef6ff; border: 1px solid #99c; padding: 8px; }
+    label { display: block; margin-top: 10px; }
+    input { padding: 6px; width: 100%; box-sizing: border-box; }
+    button { margin-top: 14px; padding: 8px 16px; }
+  </style>
+</head>
+<body>
+  <h1>Campus Event Manager</h1>
+  <nav>
+    <a href="{{ url_for('auth.index') }}">Home</a>
+    <a href="{{ url_for('auth.register') }}">Register</a>
+  </nav>
+  <hr>
+  {% for message in get_flashed_messages() %}
+    <p class="message">{{ message }}</p>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</body>
+</html>
